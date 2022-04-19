@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+
+  # Waterfall Proxy
+  waterfall:
+    container_name: waterfall
+    image: ghcr.io/kanagawa-iamtakagi-net/waterfall:2022-04-19
+    volumes:
+      - ./waterfall:/app
+    tty: true
+    stdin_open: true
+    environment:
+      JAVA_OPTS: "-Xms256M -Xmx512M"
+    networks:
+      - external_network
+
+  # Paper Servers
+  hub:
+    container_name: hub
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022-04-19
+    volumes:
+      - ./hub:/app
+    tty: true
+    stdin_open: true
+    environment:
+      JAVA_OPTS: "-Xms1G -Xmx2G"
+    networks:
+      - external_network
+
+  lab: 
+    container_name: lab
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022-04-19
+    volumes:
+      - ./lab:/app
+    tty: true
+    stdin_open: true
+    environment:
+      JAVA_OPTS: "-Xms1G -Xmx2G"
+    networks:
+      - external_network
+    
+  survival: 
+    container_name: survival
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022-04-19
+    volumes:
+      - ./survival:/app
+    tty: true
+    stdin_open: true
+    environment:
+      JAVA_OPTS: "-Xms1G -Xmx2G"
+    networks:
+      - external_network
+
+networks:
+  external_network:
+  internal_network:
+    internal: true

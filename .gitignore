@@ -1,0 +1,27 @@
+# Jar
+*.jar
+
+# Paper files
+cache/
+libraries/
+logs/
+versions/
+world/
+world_nether/
+world_the_end/
+eula.txt
+version_history.json
+usercache.json
+.console_history
+
+# Paper Plugins
+lab/plugins/bStats/config.yml
+hub/plugins/bStats/config.yml
+survival/plugins/bStats/config.yml
+
+# Waterfall Files
+waterfall/modules
+waterfall/logs
+waterfall/locations.yml
+## bStats
+waterfall/plugins/bStats/temp.txt
