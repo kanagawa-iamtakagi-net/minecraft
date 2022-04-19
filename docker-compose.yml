@@ -54,5 +54,6 @@ services:
 
 networks:
   proxy_network:
+    external: true
   internal_network:
     internal: true
