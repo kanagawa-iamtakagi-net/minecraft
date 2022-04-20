@@ -14,6 +14,7 @@ services:
       JAVA_OPTS: "-Xms256M -Xmx512M"
     networks:
       - proxy_network
+      - internal_network
 
   # Paper Servers
   hub:
@@ -26,7 +27,7 @@ services:
     environment:
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
-      - proxy_network
+      - internal_network
 
   lab: 
     container_name: lab
@@ -38,7 +39,7 @@ services:
     environment:
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
-      - proxy_network
+      - internal_network
     
   survival: 
     container_name: survival
@@ -50,7 +51,7 @@ services:
     environment:
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
-      - proxy_network
+      - internal_network
 
 networks:
   proxy_network:
