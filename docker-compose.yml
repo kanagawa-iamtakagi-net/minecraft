@@ -2,10 +2,10 @@ version: '3'
 
 services:
 
-  webfall:
-    container_name: webfall
+  web:
+    container_name: minecraft_web
     build:
-      context: ./webfall
+      context: ./web
       dockerfile: Dockerfile
     volumes:
       - ./waterfall/config.yml:/app/config.yml
