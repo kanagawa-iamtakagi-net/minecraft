@@ -13,11 +13,11 @@ export interface Props {
   };
 };
 
-const Waterfall: React.FC<{ server: MinecraftServer }> = ({server}) => {
+const Waterfall: React.FC<{ server: MinecraftServer }> = ({ server }) => {
   const { status } = server
   return (
     <div style={{ display: "flex", flexDirection: "row", background: "black", color: "white", padding: ".25rem" }}>
-      <img src={status.favicon} alt="" />
+      <img src={status.favicon} alt="Server Icon" />
 
       <div style={{ marginLeft: ".25rem", fontSize: ".875rem" }}>
         <div>{server.name}</div>
@@ -89,7 +89,7 @@ export const App: React.FC<Props> = ({ hostname, waterfall, papers, error }) => 
           </section>
         </section>
       </main>
-      <hr />
+      <hr style={{marginTop: "1.5rem"}}/>
       <footer>
         <p>
           GitHub:
@@ -106,4 +106,7 @@ export const App: React.FC<Props> = ({ hostname, waterfall, papers, error }) => 
   )
 }
 
-export const renderApp = (props: Props) => renderHtml({title: props.hostname, children: <App hostname={props.hostname} waterfall={props.waterfall} papers={props.papers}/> })
+export const renderApp = (props: Props) => renderHtml({ 
+  title: props.hostname, 
+  children: <App hostname={props.hostname} waterfall={props.waterfall} papers={props.papers} /> 
+})
