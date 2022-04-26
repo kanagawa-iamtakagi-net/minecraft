@@ -77,11 +77,7 @@ const Paper: React.FC<{ server: MinecraftServer }> = ({ server }) => {
   return (
     <tr>
       <td>{server.name}</td>
-      {isOnline ? (
-        <td style={{ color: "green" }}>Online</td>
-      ) : (
-        <td style={{ color: "red" }}>Offline</td>
-      )}
+      <td style={{ color: isOnline ? "green" : "red" }}>O{isOnline ? "n" : "ff" }line</td>
       <td>{isOnline && status && status.version.name}</td>
       <td>
         {isOnline &&
