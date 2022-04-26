@@ -1,7 +1,7 @@
-prevent_proxy_connections: false
+server_connect_timeout: 5000
 listeners:
 - query_port: 25565
-  motd: '&1Another Bungee server'
+  motd: '&rWelcome to the &aminecraft.iamtakagi.net&r!'
   tab_list: GLOBAL_PING
   query_enabled: false
   proxy_protocol: false
@@ -12,7 +12,7 @@ listeners:
   - hub
   bind_local_address: true
   host: 0.0.0.0:25565
-  max_players: 1
+  max_players: 30
   tab_size: 60
   force_default_server: false
 remote_ping_cache: -1
@@ -28,7 +28,7 @@ permissions:
   - bungeecord.command.reload
 log_pings: true
 connection_throttle_limit: 3
-server_connect_timeout: 5000
+prevent_proxy_connections: false
 timeout: 30000
 player_limit: -1
 ip_forward: false
