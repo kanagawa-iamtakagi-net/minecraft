@@ -1,15 +1,5 @@
 import { NewPingResult } from "minecraft-protocol"
 
-export interface Props {
-    hostname: string,
-    waterfall: MinecraftServer,
-    papers: Array<MinecraftServer>
-    error?: {
-      status: number;
-      message: string;
-    };
-};
-
 export interface MinecraftServer {
     name: string
     address: string
