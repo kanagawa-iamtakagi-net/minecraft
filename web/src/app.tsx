@@ -1,32 +1,48 @@
 import React from "react";
 import { MinecraftServer } from "./types";
-import McText from 'mctext-react'
+import McText from "mctext-react";
 import { renderHtml } from "./html";
 
 export interface Props {
-  hostname: string,
-  waterfall: MinecraftServer,
-  papers: Array<MinecraftServer>
+  hostname: string;
+  waterfall: MinecraftServer;
+  papers: Array<MinecraftServer>;
   error?: {
     status: number;
     message: string;
   };
-};
+}
 
 const Waterfall: React.FC<{ server: MinecraftServer }> = ({ server }) => {
-  const { status, isOnline } = server
-  if(!isOnline || !status) {
+  const { status, isOnline } = server;
+  if (!isOnline || !status) {
     return (
-      <div style={{ display: "flex", flexDirection: "row", background: "black", color: "white", padding: ".25rem" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          background: "black",
+          color: "white",
+          padding: ".25rem",
+        }}
+      >
         <div style={{ marginLeft: ".25rem", fontSize: ".875rem" }}>
           <div>{server.name}</div>
-          <div style={{color: "red"}}>サーバーはオフラインです</div>
+          <div style={{ color: "red" }}>サーバーはオフラインです</div>
         </div>
       </div>
-    )
+    );
   }
   return (
-    <div style={{ display: "flex", flexDirection: "row", background: "black", color: "white", padding: ".25rem" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        background: "black",
+        color: "white",
+        padding: ".25rem",
+      }}
+    >
       <img src={status.favicon} alt="" />
 
       <div style={{ marginLeft: ".25rem", fontSize: ".875rem" }}>
@@ -35,32 +51,46 @@ const Waterfall: React.FC<{ server: MinecraftServer }> = ({ server }) => {
       </div>
 
       <div style={{ fontSize: ".75rem" }}>
-        <div style={{ paddingLeft: ".5rem", paddingRight: ".5rem" }}>{status.version.name}</div>
-        <div style={{ paddingLeft: ".5rem", paddingRight: ".5rem" }}>{status.latency}ms</div>
+        <div style={{ paddingLeft: ".5rem", paddingRight: ".5rem" }}>
+          {status.version.name}
+        </div>
+        <div style={{ paddingLeft: ".5rem", paddingRight: ".5rem" }}>
+          {status.latency}ms
+        </div>
       </div>
 
-      <div style={{ fontSize: ".75rem", paddingLeft: ".5rem", paddingRight: ".5rem" }}>
+      <div
+        style={{
+          fontSize: ".75rem",
+          paddingLeft: ".5rem",
+          paddingRight: ".5rem",
+        }}
+      >
         {status.players.online} / {status.players.max}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Paper: React.FC<{ server: MinecraftServer }> = ({ server }) => {
-  const { status, isOnline } = server
+  const { status, isOnline } = server;
   return (
     <tr>
       <td>{server.name}</td>
-      {isOnline ? <td style={{color: "green"}}>Online</td> : <td style={{color: "red"}}>Offline</td>}
+      {isOnline ? (
+        <td style={{ color: "green" }}>Online</td>
+      ) : (
+        <td style={{ color: "red" }}>Offline</td>
+      )}
+      <td>{isOnline && status && status.version.name}</td>
       <td>
-        {(isOnline && status) && status.version.name}
-      </td>
-      <td>
-       {(isOnline && status) && status.players.online + " / " + status.players.max}  
+        {isOnline &&
+          status &&
+          status.players.online + " / " + status.players.max}
       </td>
     </tr>
-  )
-}
+  );
+};
 
 const Papers: React.FC<{ servers: Array<MinecraftServer> }> = ({ servers }) => {
   return (
@@ -75,20 +105,26 @@ const Papers: React.FC<{ servers: Array<MinecraftServer> }> = ({ servers }) => {
       </thead>
       <tbody>
         {servers.map((server, i) => {
-          return (
-            <Paper server={server} />
-          )
+          return <Paper server={server} />;
         })}
       </tbody>
     </table>
-  )
-}
+  );
+};
 
-export const App: React.FC<Props> = ({ hostname, waterfall, papers, error }) => {
-  if (error) return <>
-    <p>{error.message}</p>
-    <p>{error.status}</p>
-  </>
+export const App: React.FC<Props> = ({
+  hostname,
+  waterfall,
+  papers,
+  error,
+}) => {
+  if (error)
+    return (
+      <>
+        <p>{error.message}</p>
+        <p>{error.status}</p>
+      </>
+    );
 
   return (
     <>
@@ -102,24 +138,31 @@ export const App: React.FC<Props> = ({ hostname, waterfall, papers, error }) => 
           </section>
         </section>
       </main>
-      <hr style={{marginTop: "1.5rem"}}/>
+      <hr style={{ marginTop: "1.5rem" }} />
       <footer>
         <p>
-          GitHub:
-          <a href="https://github.com/kanagawa-iamtakagi-net/minecraft"
-          >https://github.com/kanagawa-iamtakagi-net/minecraft</a>
+          GitHub:{" "}
+          <a href="https://github.com/kanagawa-iamtakagi-net/minecraft">
+            https://github.com/kanagawa-iamtakagi-net/minecraft
+          </a>
         </p>
         <p>
-          Author:
-          <a href="https://github.com/iamtakagi">iamtakagi</a>
+          Author: <a href="https://github.com/iamtakagi">iamtakagi</a>
         </p>
         <p>© iamtakagi</p>
       </footer>
     </>
-  )
-}
+  );
+};
 
-export const renderApp = (props: Props) => renderHtml({ 
-  title: props.hostname, 
-  children: <App hostname={props.hostname} waterfall={props.waterfall} papers={props.papers} /> 
-})
+export const renderApp = (props: Props) =>
+  renderHtml({
+    title: props.hostname,
+    children: (
+      <App
+        hostname={props.hostname}
+        waterfall={props.waterfall}
+        papers={props.papers}
+      />
+    ),
+  });

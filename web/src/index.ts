@@ -1,5 +1,5 @@
 import express from "express";
-import path from "path"
+import path from "path";
 import { renderApp } from "./app";
 import { HOSTNAME } from "./env";
 import { config } from "./config";
@@ -10,10 +10,10 @@ const app = express();
 
 app.get("/", async (req, res, next) => {
   // Get the status of Waterfall Proxy
-  const name = HOSTNAME
-  const address = "waterfall"
-  const host = "waterfall"
-  const port = Number(config.listeners[0].query_port)
+  const name = HOSTNAME;
+  const address = "waterfall";
+  const host = "waterfall";
+  const port = Number(config.listeners[0].query_port);
   const waterfall = await new Promise<MinecraftServer>((resolve, reject) => {
     protocol.ping({ host, port }, (err, result) => {
       if (err) {
@@ -22,8 +22,8 @@ app.get("/", async (req, res, next) => {
           address,
           host,
           port,
-          isOnline: false
-        })
+          isOnline: false,
+        });
       }
       resolve({
         name,
@@ -32,17 +32,18 @@ app.get("/", async (req, res, next) => {
         port,
         isOnline: true,
         status: result as NewPingResult,
-      })
-    })
-  })
+      });
+    });
+  });
 
   // Get the status of Paper Servers
-  const papers: Array<MinecraftServer> = []
+  const papers: Array<MinecraftServer> = [];
   for (let name in config.servers) {
-    const server = config.servers[name] // e.g: hub
-    const address = String(server.address) // e.g: hub:25566
-    const host = String(server.address).split(":")[0] // e.g: 25566
-    const port = address.split(":")[1] == null ? 25565 : Number(address.split(":")[1])
+    const server = config.servers[name]; // e.g: hub
+    const address = String(server.address); // e.g: hub:25566
+    const host = String(server.address).split(":")[0]; // e.g: 25566
+    const port =
+      address.split(":")[1] == null ? 25565 : Number(address.split(":")[1]);
     const paper = await new Promise<MinecraftServer>((resolve) => {
       protocol.ping({ host, port }, (err, result) => {
         if (err) {
@@ -51,8 +52,8 @@ app.get("/", async (req, res, next) => {
             address,
             host,
             port,
-            isOnline: false
-          })
+            isOnline: false,
+          });
         }
         resolve({
           name,
@@ -61,19 +62,19 @@ app.get("/", async (req, res, next) => {
           port,
           isOnline: true,
           status: result as NewPingResult,
-        })
-      })
-    })
-    if (paper !== null) papers.push(paper)
+        });
+      });
+    });
+    if (paper !== null) papers.push(paper);
   }
 
   const props = {
     hostname: HOSTNAME,
     waterfall,
-    papers
-  }
+    papers,
+  };
 
-  res.send(renderApp(props))
+  res.send(renderApp(props));
 });
 
 app.use(express.static(path.resolve(__dirname, "..", "public")));

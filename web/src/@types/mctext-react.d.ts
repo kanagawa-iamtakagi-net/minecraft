@@ -1,1 +1,1 @@
-declare module 'mctext-react'
+declare module "mctext-react";
