@@ -17,14 +17,21 @@ app.get("/", async (req, res, next) => {
   const waterfall = await new Promise<MinecraftServer>((resolve, reject) => {
     protocol.ping({ host, port }, (err, result) => {
       if (err) {
-        return reject("what")
+        return resolve({
+          name,
+          address,
+          host,
+          port,
+          isOnline: false
+        })
       }
       resolve({
         name,
         address,
         host,
         port,
-        status: result as NewPingResult
+        isOnline: true,
+        status: result as NewPingResult,
       })
     })
   })
@@ -36,17 +43,24 @@ app.get("/", async (req, res, next) => {
     const address = String(server.address) // e.g: hub:25566
     const host = String(server.address).split(":")[0] // e.g: 25566
     const port = address.split(":")[1] == null ? 25565 : Number(address.split(":")[1])
-    const paper = await new Promise<MinecraftServer | null>((resolve) => {
+    const paper = await new Promise<MinecraftServer>((resolve) => {
       protocol.ping({ host, port }, (err, result) => {
         if (err) {
-          return resolve(null)
+          return resolve({
+            name,
+            address,
+            host,
+            port,
+            isOnline: false
+          })
         }
         resolve({
           name,
           address,
           host,
           port,
-          status: result as NewPingResult
+          isOnline: true,
+          status: result as NewPingResult,
         })
       })
     })

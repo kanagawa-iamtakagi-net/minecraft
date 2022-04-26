@@ -5,7 +5,8 @@ export interface MinecraftServer {
     address: string
     host: string
     port: number
-    status: NewPingResult
+    isOnline: boolean,
+    status?: NewPingResult
 }
 
 export interface WaterfallConfig {

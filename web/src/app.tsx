@@ -14,10 +14,20 @@ export interface Props {
 };
 
 const Waterfall: React.FC<{ server: MinecraftServer }> = ({ server }) => {
-  const { status } = server
+  const { status, isOnline } = server
+  if(!isOnline || !status) {
+    return (
+      <div style={{ display: "flex", flexDirection: "row", background: "black", color: "white", padding: ".25rem" }}>
+        <div style={{ marginLeft: ".25rem", fontSize: ".875rem" }}>
+          <div>{server.name}</div>
+          <div style={{color: "red"}}>サーバーはオフラインです</div>
+        </div>
+      </div>
+    )
+  }
   return (
     <div style={{ display: "flex", flexDirection: "row", background: "black", color: "white", padding: ".25rem" }}>
-      <img src={status.favicon} alt="Server Icon" />
+      <img src={status.favicon} alt="" />
 
       <div style={{ marginLeft: ".25rem", fontSize: ".875rem" }}>
         <div>{server.name}</div>
@@ -37,14 +47,16 @@ const Waterfall: React.FC<{ server: MinecraftServer }> = ({ server }) => {
 }
 
 const Paper: React.FC<{ server: MinecraftServer }> = ({ server }) => {
+  const { status, isOnline } = server
   return (
     <tr>
       <td>{server.name}</td>
+      {isOnline ? <td style={{color: "green"}}>Online</td> : <td style={{color: "red"}}>Offline</td>}
       <td>
-        {server.status.version.name}
+        {(isOnline && status) && status.version.name}
       </td>
       <td>
-        {server.status.players.online} / {server.status.players.max}
+       {(isOnline && status) && status.players.online + " / " + status.players.max}  
       </td>
     </tr>
   )
@@ -56,6 +68,7 @@ const Papers: React.FC<{ servers: Array<MinecraftServer> }> = ({ servers }) => {
       <thead>
         <tr>
           <th>Server Name</th>
+          <th>Server Status</th>
           <th>Version</th>
           <th>Online Players</th>
         </tr>
