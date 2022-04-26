@@ -20,7 +20,7 @@ const Waterfall: React.FC<{ server: MinecraftServer }> = ({server}) => {
       <img src={status.favicon} alt="" />
 
       <div style={{ marginLeft: ".25rem", fontSize: ".875rem" }}>
-        <div>{server.host}</div>
+        <div>{server.name}</div>
         <McText>{status.description}</McText>
       </div>
 
