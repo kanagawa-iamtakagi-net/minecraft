@@ -2,6 +2,21 @@ version: '3'
 
 services:
 
+  webfall:
+    container_name: webfall
+    build:
+      context: ./webfall
+      dockerfile: Dockerfile
+    volumes:
+      - ./waterfall/config.yml:/app/config.yml
+    environment:
+      - PORT=3000
+      - HOSTNAME=minecraft.iamtakagi.net
+    networks:
+      - proxy_network
+      - internal_network
+    restart: always
+
   # Waterfall Proxy
   waterfall:
     container_name: waterfall
@@ -15,6 +30,7 @@ services:
     networks:
       - proxy_network
       - internal_network
+    restart: always
 
   # Paper Servers
   hub:
@@ -28,6 +44,7 @@ services:
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
       - internal_network
+    restart: always
 
   lab: 
     container_name: lab
@@ -40,6 +57,7 @@ services:
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
       - internal_network
+    restart: always
     
   survival: 
     container_name: survival
@@ -52,6 +70,7 @@ services:
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
       - internal_network
+    restart: always
 
 networks:
   proxy_network:

@@ -25,3 +25,8 @@ waterfall/logs
 waterfall/locations.yml
 ## bStats
 waterfall/plugins/bStats/temp.txt
+
+# Web
+web/dist/
+web/node_modules/
+web/yarn.error
