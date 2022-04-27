@@ -1,7 +1,7 @@
-server_connect_timeout: 5000
+prevent_proxy_connections: false
 listeners:
 - query_port: 25565
-  motd: '&rWelcome to the &aminecraft.iamtakagi.net&r!'
+  motd: '&rWelcome to the &aminecraft.iamtakagi.net &r!'
   tab_list: GLOBAL_PING
   query_enabled: false
   proxy_protocol: false
@@ -28,7 +28,7 @@ permissions:
   - bungeecord.command.reload
 log_pings: true
 connection_throttle_limit: 3
-prevent_proxy_connections: false
+server_connect_timeout: 5000
 timeout: 30000
 player_limit: -1
 ip_forward: false
@@ -45,14 +45,14 @@ disabled_commands:
 - disabledcommandhere
 servers:
   hub:
-    motd: '&1Just another Waterfall - Forced Host'
+    motd: '&rWelcome to the &aminecraft.iamtakagi.net &r!'
     address: hub:25566
     restricted: false
   lab:
-    motd: '&1Just another Waterfall - Forced Host'
+    motd: '&rWelcome to the &aminecraft.iamtakagi.net &r!'
     address: lab:25567
     restricted: false
   survival:
-    motd: '&1Just another Waterfall - Forced Host'
+    motd: '&rWelcome to the &aminecraft.iamtakagi.net &r!'
     address: survival:25568
     restricted: false

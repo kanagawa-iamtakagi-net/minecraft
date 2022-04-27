@@ -29,6 +29,17 @@ survival/plugins/LockettePro/lang_it.yml
 survival/plugins/LockettePro/lang_pl.yml
 survival/plugins/LockettePro/lang.yml
 survival/plugins/LockettePro/lang_zh-cn.yml
+
+### WorldEdit
+*/plugins/WorldEdit/.archive-unpack
+*/plugins/WorldEdit/assets
+*/plugins/WorldEdit/schematics
+*/plugins/WorldEdit/sessions
+
+### WorldGuard
+*/plugins/WorldGuard/cache
+*/plugins/WorldGuard/worlds
+
 # Waterfall Files
 waterfall/modules
 waterfall/logs

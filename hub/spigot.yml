@@ -138,6 +138,8 @@ world-settings:
     arrow-despawn-rate: 1200
     trident-despawn-rate: 1200
     hanging-tick-frequency: 100
+  worldeditregentempworld:
+    verbose: false
 commands:
   log: true
   tab-complete: 0

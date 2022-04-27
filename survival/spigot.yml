@@ -157,6 +157,8 @@ world-settings:
       weepingvines-modifier: 100
       cavevines-modifier: 100
       glowberry-modifier: 100
+  worldeditregentempworld:
+    verbose: false
 players:
   disable-saving: false
 advancements:
