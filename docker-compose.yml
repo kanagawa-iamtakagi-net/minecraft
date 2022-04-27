@@ -2,6 +2,26 @@ version: '3'
 
 services:
 
+  mysql:
+    container_name: minecraft_mysql
+    image: mariadb:10.5
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      TZ: "Asia/Tokyo"
+    env_file:
+      - ./mysql/.env
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --performance-schema=false --expire_logs_days=1
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - internal_network
+
   web:
     container_name: minecraft_web
     build:
@@ -20,7 +40,7 @@ services:
   # Waterfall Proxy
   waterfall:
     container_name: waterfall
-    image: ghcr.io/kanagawa-iamtakagi-net/waterfall:2022-04-19
+    image: ghcr.io/kanagawa-iamtakagi-net/waterfall:2022.04.26
     volumes:
       - ./waterfall:/app
     tty: true
@@ -31,11 +51,13 @@ services:
       - proxy_network
       - internal_network
     restart: always
+    depends_on:
+      - mysql
 
   # Paper Servers
   hub:
     container_name: hub
-    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022-04-19
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
     volumes:
       - ./hub:/app
     tty: true
@@ -45,10 +67,12 @@ services:
     networks:
       - internal_network
     restart: always
+    depends_on:
+      - mysql
 
   lab: 
     container_name: lab
-    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022-04-19
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
     volumes:
       - ./lab:/app
     tty: true
@@ -58,10 +82,12 @@ services:
     networks:
       - internal_network
     restart: always
+    depends_on:
+      - mysql
     
   survival: 
     container_name: survival
-    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022-04-19
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
     volumes:
       - ./survival:/app
     tty: true
@@ -71,6 +97,8 @@ services:
     networks:
       - internal_network
     restart: always
+    depends_on:
+      - mysql
 
 networks:
   proxy_network:

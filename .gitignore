@@ -30,3 +30,8 @@ waterfall/plugins/bStats/temp.txt
 web/dist/
 web/node_modules/
 web/yarn.error
+
+# MySQL
+mysql/data/
+mysql/.env
+survival/plugins/CoreProtect/.license
