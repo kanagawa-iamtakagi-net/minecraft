@@ -77,7 +77,7 @@ const Paper: React.FC<{ server: MinecraftServer }> = ({ server }) => {
   return (
     <tr>
       <td>{server.name}</td>
-      <td style={{ color: isOnline ? "green" : "red" }}>O{isOnline ? "n" : "ff" }line</td>
+      <td style={{ color: isOnline ? "green" : "red" }}>オ{isOnline ? "ン" : "フ" }ライン</td>
       <td>{isOnline && status && status.version.name}</td>
       <td>
         {isOnline &&
@@ -93,10 +93,10 @@ const Papers: React.FC<{ servers: Array<MinecraftServer> }> = ({ servers }) => {
     <table>
       <thead>
         <tr>
-          <th>Server Name</th>
-          <th>Server Status</th>
-          <th>Version</th>
-          <th>Online Players</th>
+          <th>サーバー名</th>
+          <th>サーバー状態</th>
+          <th>バージョン</th>
+          <th>プレイヤー数</th>
         </tr>
       </thead>
       <tbody>
@@ -129,7 +129,7 @@ export const App: React.FC<Props> = ({
           <h1>{hostname}</h1>
           <Waterfall server={waterfall} />
           <section>
-            <h2>Servers</h2>
+            <h2>サーバーリスト</h2>
             <Papers servers={papers} />
           </section>
         </section>
