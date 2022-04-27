@@ -16,9 +16,19 @@ usercache.json
 
 # Paper Plugins
 lab/plugins/bStats/config.yml
-hub/plugins/bStats/config.yml
-survival/plugins/bStats/config.yml
 
+hub/plugins/bStats/config.yml
+
+survival/plugins/bStats/config.yml
+survival/plugins/CoreProtect/.license
+survival/plugins/LockettePro/lang_de.yml
+survival/plugins/LockettePro/lang_es.yml
+survival/plugins/LockettePro/lang_fr.yml
+survival/plugins/LockettePro/lang_hu.yml
+survival/plugins/LockettePro/lang_it.yml
+survival/plugins/LockettePro/lang_pl.yml
+survival/plugins/LockettePro/lang.yml
+survival/plugins/LockettePro/lang_zh-cn.yml
 # Waterfall Files
 waterfall/modules
 waterfall/logs
@@ -34,4 +44,4 @@ web/yarn.error
 # MySQL
 mysql/data/
 mysql/.env
-survival/plugins/CoreProtect/.license
+survival/plugins/ProtocolLib/lastupdate
