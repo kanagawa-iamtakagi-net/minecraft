@@ -29,7 +29,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./waterfall/config.yml:/app/config.yml
+      - /etc/localtime:/etc/localtime:ro
     environment:
+      - TZ=Asia/Tokyo
       - PORT=3000
       - HOSTNAME=minecraft.iamtakagi.net
     networks:
@@ -43,9 +45,11 @@ services:
     image: ghcr.io/kanagawa-iamtakagi-net/waterfall:2022.04.26
     volumes:
       - ./waterfall:/app
+      - /etc/localtime:/etc/localtime:ro
     tty: true
     stdin_open: true
     environment:
+      TZ: "Asia/Tokyo"
       JAVA_OPTS: "-Xms256M -Xmx512M"
     networks:
       - proxy_network
@@ -60,11 +64,14 @@ services:
     image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
     volumes:
       - ./hub:/app
+      - /etc/localtime:/etc/localtime:ro
     tty: true
     stdin_open: true
     environment:
+      TZ: "Asia/Tokyo"
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
+      - default
       - internal_network
     restart: always
     depends_on:
@@ -75,11 +82,14 @@ services:
     image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
     volumes:
       - ./lab:/app
+      - /etc/localtime:/etc/localtime:ro
     tty: true
     stdin_open: true
     environment:
+      TZ: "Asia/Tokyo"
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
+      - default
       - internal_network
     restart: always
     depends_on:
@@ -90,11 +100,14 @@ services:
     image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
     volumes:
       - ./survival:/app
+      - /etc/localtime:/etc/localtime:ro
     tty: true
     stdin_open: true
     environment:
+      TZ: "Asia/Tokyo"
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
+      - default
       - internal_network
     restart: always
     depends_on:
