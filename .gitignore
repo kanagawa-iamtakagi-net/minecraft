@@ -56,3 +56,16 @@ web/yarn.error
 mysql/data/
 mysql/.env
 survival/plugins/ProtocolLib/lastupdate
+survival/plugins/DiscordSRV/English.alerts.yml
+survival/plugins/DiscordSRV/English.config.yml
+survival/plugins/DiscordSRV/English.linking.yml
+survival/plugins/DiscordSRV/English.messages.yml
+survival/plugins/DiscordSRV/English.synchronization.yml
+survival/plugins/DiscordSRV/English.voice.yml
+survival/plugins/DiscordSRV/Japanese.alerts.yml
+survival/plugins/DiscordSRV/Japanese.config.yml
+survival/plugins/DiscordSRV/Japanese.linking.yml
+survival/plugins/DiscordSRV/Japanese.messages.yml
+survival/plugins/DiscordSRV/Japanese.synchronization.yml
+survival/plugins/DiscordSRV/Japanese.voice.yml
+survival/plugins/DiscordSRV/config.yml
