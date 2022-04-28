@@ -1,0 +1,5 @@
+# CoreProtect v21.2 Language Cache (ja)
+
+AMOUNT_ITEM: "{0} {item|items}"
+LINK_DISCORD: "Discord: {0}"
+LINK_PATREON: "Patreon: {0}"
