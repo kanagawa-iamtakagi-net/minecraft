@@ -3,7 +3,7 @@ import { MinecraftServer } from "./types";
 import McText from "mctext-react";
 import { renderHtml } from "./html";
 
-export interface Props {
+interface Props {
   hostname: string;
   waterfall: MinecraftServer;
   papers: Array<MinecraftServer>;
