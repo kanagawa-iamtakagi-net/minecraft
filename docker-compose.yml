@@ -71,7 +71,7 @@ services:
       TZ: "Asia/Tokyo"
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
-      - default
+      - proxy_network
       - internal_network
     restart: always
     depends_on:
@@ -89,7 +89,7 @@ services:
       TZ: "Asia/Tokyo"
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
-      - default
+      - proxy_network
       - internal_network
     restart: always
     depends_on:
@@ -107,7 +107,7 @@ services:
       TZ: "Asia/Tokyo"
       JAVA_OPTS: "-Xms1G -Xmx2G"
     networks:
-      - default
+      - proxy_network
       - internal_network
     restart: always
     depends_on:
