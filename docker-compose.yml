@@ -42,7 +42,7 @@ services:
   # Waterfall Proxy
   waterfall:
     container_name: waterfall
-    image: ghcr.io/kanagawa-iamtakagi-net/waterfall:2022.04.26
+    image: ghcr.io/kanagawa-iamtakagi-net/waterfall:2022.05.11
     volumes:
       - ./waterfall:/app
       - /etc/localtime:/etc/localtime:ro
@@ -61,7 +61,7 @@ services:
   # Paper Servers
   hub:
     container_name: hub
-    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.05.11
     volumes:
       - ./hub:/app
       - /etc/localtime:/etc/localtime:ro
@@ -79,7 +79,7 @@ services:
 
   lab: 
     container_name: lab
-    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.05.11
     volumes:
       - ./lab:/app
       - /etc/localtime:/etc/localtime:ro
@@ -97,7 +97,7 @@ services:
     
   survival: 
     container_name: survival
-    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.04.26
+    image: ghcr.io/kanagawa-iamtakagi-net/paper:2022.05.11
     volumes:
       - ./survival:/app
       - /etc/localtime:/etc/localtime:ro
