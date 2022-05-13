@@ -69,3 +69,4 @@ survival/plugins/DiscordSRV/Japanese.messages.yml
 survival/plugins/DiscordSRV/Japanese.synchronization.yml
 survival/plugins/DiscordSRV/Japanese.voice.yml
 survival/plugins/DiscordSRV/config.yml
+waterfall/plugins/ProxyVirtualMotd/cache.json
